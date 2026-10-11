@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning Meri Baby 💗</title>
+    <!-- Import Google Fonts: Poppins for readability, Great Vibes for romantic handwritten text -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --baby-pink: #FFC0CB;
+            --blush-pink: #FFE4EC;
+            --rose-pink: #FF69B4;
+            --deep-pink: #FF1493;
+            --soft-lavender: #E6D5FF;
+            --white: #FFFFFF;
+            --text-dark: #6a1b41;
+            --glass-bg: rgba(255, 255, 255, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.7);
+            --glass-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Hide default cursor for custom heart cursor */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--blush-pink);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+
+        .romantic-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--deep-pink);
+            line-height: 1.2;
+        }
+
+        #custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+        
+        #custom-cursor svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--deep-pink);
+            filter: drop-shadow(0 2px 4px rgba(255, 20, 147, 0.4));
+        }
+
+        /* Background Music Toggle */
+        #bgm-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--glass-border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: var(--glass-shadow);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        #bgm-toggle:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* General Button Style */
+        .btn {
+            background: linear-gradient(45deg, var(--rose-pink), var(--deep-pink));
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse-heart {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        @keyframes drift {
+            from { transform: translateX(-10vw) rotate(0deg); }
+            to { transform: translateX(110vw) rotate(360deg); }
+        }
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--blush-pink), var(--soft-lavender));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 5000;
+            transition: opacity 1s ease, visibility 1s;
+        }
+
+        .loading-cloud-container {
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .loading-text {
+            margin-top: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: var(--deep-pink);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .progress-bar-container {
+            width: 250px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--rose-pink), var(--deep-pink));
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+
+        section {
+            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease-out;
+        }
+
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #hero {
+            background: radial-gradient(circle at center, var(--white) 0%, var(--blush-pink) 100%);
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--deep-pink);
+            text-shadow: 2px 2px 10px rgba(255, 105, 180, 0.3);
+            margin-bottom: 10px;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            z-index: 2;
+        }
+
+        .hero-message {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 700px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 40px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .floating-bg-hearts {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        #kitten-garden {
+            background: var(--white);
+            border-radius: 50px 50px 0 0;
+            box-shadow: 0 -10px 40px rgba(255, 192, 203, 0.4);
+        }
+
+        .section-heading {
+            font-size: 2.8rem;
+            color: var(--rose-pink);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .kitten-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .kitten-card {
+            background: var(--blush-pink);
+            border-radius: 30px;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(255, 192, 203, 0.3);
+            position: relative;
+        }
+
+        .kitten-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.4);
+        }
+
+        .kitten-svg {
+            width: 120px;
+            height: 120px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .kitten-card:nth-child(even) .kitten-svg {
+            animation-delay: 1s;
+        }
+        
+        .kitten-message-bubble {
+            position: absolute;
+            top: -50px;
+            background: var(--white);
+            border: 2px solid var(--rose-pink);
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            width: 180px;
+            z-index: 10;
+        }
+
+        .kitten-message-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px 8px 0;
+            border-style: solid;
+            border-color: var(--rose-pink) transparent transparent transparent;
+        }
+
+        .kitten-card:hover .kitten-message-bubble {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #special-letter {
+            background: linear-gradient(135deg, var(--soft-lavender), var(--blush-pink));
+        }
+
+        .envelope-container {
+            perspective: 1000px;
+            width: 320px;
+            height: 220px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .envelope {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+        }
+
+        .envelope.open .flap {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        .envelope.open .letter-paper {
+            transform: translateY(-100px) scale(1.5);
+            z-index: 10;
+            opacity: 1;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .envelope-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--rose-pink);
+            border-radius: 10px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.1);
+        }
+
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: var(--deep-pink);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top;
+            transition: transform 0.6s ease-in-out;
+            z-index: 4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 20px;
+        }
+
+        .wax-seal {
+            width: 50px;
+            height: 50px;
+            background: #D32F2F;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: gold;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.5rem;
+            border: 2px solid #b71c1c;
+        }
+
+        .letter-paper {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: #fffdf5; /* Old paper feel */
+            border-radius: 5px;
+            padding: 30px;
+            z-index: 1;
+            transition: all 1s ease-in-out;
+            opacity: 0;
+            text-align: left;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+
+        .letter-content p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .letter-content p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #why-special {
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="%23FFC0CB" opacity="0.5"/></svg>') repeat, linear-gradient(to bottom, var(--blush-pink), var(--white));
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: var(--glass-shadow);
+            transition: transform 0.4s, box-shadow 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+        }
+
+        .glass-card::before {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0.5;
+            font-size: 1.5rem;
+        }
+
+        .card-number {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--baby-pink);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        #flower-garden {
+            position: relative;
+            background: linear-gradient(to top, var(--blush-pink), var(--white));
+            overflow: hidden;
+        }
+
+        .garden-scenery {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 200px;
+            gap: 20px;
+            margin-top: 40px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .flower-svg {
+            width: 80px;
+            height: auto;
+            transform-origin: bottom center;
+            animation: sway 4s ease-in-out infinite alternate;
+        }
+
+        .flower-svg:nth-child(even) { animation-duration: 5s; animation-delay: 1s; }
+        .flower-svg:nth-child(3n) { animation-duration: 3.5s; animation-delay: 0.5s; }
+
+        @keyframes sway {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+
+        .falling-petal {
+            position: absolute;
+            top: -20px;
+            background: var(--rose-pink);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        #morning-care {
+            background: var(--white);
+        }
+
+        .checklist-container {
+            background: var(--blush-pink);
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(255,192,203,0.3);
+            text-align: left;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            cursor: none; /* keep custom cursor */
+            transition: transform 0.2s;
+            padding: 10px;
+            border-radius: 15px;
+        }
+        
+        .checklist-item:hover {
+            background: rgba(255,255,255,0.5);
+            transform: translateX(10px);
+        }
+
+        .custom-checkbox {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--rose-pink);
+            border-radius: 8px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            background: var(--white);
+        }
+
+        .checklist-item.checked .custom-checkbox {
+            background: var(--rose-pink);
+        }
+
+        .checklist-item.checked .custom-checkbox::after {
+            content: '✔';
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .checklist-item.checked span {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .overall-progress {
+            margin-top: 30px;
+        }
+        
+        .care-progress-bar {
+            height: 15px;
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--baby-pink);
+        }
+
+        .care-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--baby-pink), var(--rose-pink));
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #love-counter {
+            background: linear-gradient(to bottom, var(--white), var(--blush-pink));
+        }
+
+        .giant-heart-btn {
+            background: none;
+            border: none;
+            outline: none;
+            position: relative;
+            margin: 40px 0;
+            transition: transform 0.1s;
+        }
+
+        .giant-heart-btn:active { transform: scale(0.9); }
+
+        .giant-heart-svg {
+            width: 200px;
+            height: 200px;
+            filter: drop-shadow(0 15px 25px rgba(255,20,147,0.4));
+            animation: pulse-heart 2s infinite;
+        }
+
+        .counter-display {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--deep-pink);
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 2px 2px 0px var(--white);
+        }
+
+        #night-promise {
+            background: linear-gradient(to bottom, #2b1b42, #5a3e75);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #night-promise .section-heading, 
+        #night-promise .romantic-text {
+            color: var(--baby-pink);
+            text-shadow: 0 0 10px rgba(255,192,203,0.5);
+        }
+
+        .stars-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+        }
+
+        .moon-kitten-scene {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+        }
+
+        .promise-text {
+            max-width: 800px;
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        #secret-surprise {
+            background: radial-gradient(circle, var(--blush-pink), var(--white));
+        }
+
+        .gift-box-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            cursor: pointer;
+        }
+
+        .gift-box-svg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s;
+        }
+
+        .gift-box-container:hover .gift-box-svg {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .gift-lid {
+            transform-origin: bottom right;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gift-box-container.opened .gift-lid {
+            transform: rotate(110deg) translate(20px, -40px);
+            opacity: 0;
+        }
+
+        .surprise-message {
+            display: none;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(255,20,147,0.3);
+            max-width: 700px;
+            margin-top: 20px;
+            border: 3px dashed var(--baby-pink);
+            animation: fade-in-up 0.8s forwards;
+        }
+
+        #final-section {
+            background: var(--rose-pink);
+            color: var(--white);
+            text-align: center;
+        }
+
+        #final-section .section-heading {
+            color: var(--white);
+        }
+
+        .final-kittens {
+            width: 250px;
+            height: auto;
+            margin: 30px 0;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+            transition: transform 0.5s;
+        }
+
+        .final-kittens.hug-tight {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: var(--baby-pink);
+            text-align: center;
+            padding: 20px;
+            font-size: 1rem;
+            border-top: 5px solid var(--deep-pink);
+        }
+
+        /* Confetti Elements */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            z-index: 9999;
+            pointer-events: none;
+            animation: fall-confetti 3s linear forwards;
+        }
+
+        @keyframes fall-confetti {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .romantic-text { font-size: 2rem; }
+            .glass-card { width: 100%; }
+            #custom-cursor { display: none; } /* Disable custom cursor on mobile */
+            * { cursor: auto; }
+            .checklist-container { padding: 20px; }
+            .promise-text { padding: 20px; font-size: 1rem; }
+            .envelope-container { width: 280px; }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Soft Background Chime Audio (Data URI for self-containment, short magic sound) -->
+    <!-- Since embedding a whole song is too large, we will use Web Audio API in JS for clicks and a placeholder comment for a real track if desired. -->
+    
+    <button id="bgm-toggle" aria-label="Toggle Music" onclick="toggleMute()">
+        🎵
+    </button>
+
+    <div id="custom-cursor">
+        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    </div>
+
+    <!-- 1. BEAUTIFUL LOADING SCREEN -->
+    <div id="loading-screen">
+        <div class="loading-cloud-container">
+            <!-- Sleeping Kitten on Cloud SVG -->
+            <svg width="200" height="150" viewBox="0 0 200 150">
+                <!-- Cloud -->
+                <path d="M50 100 Q40 80 70 70 Q90 40 130 60 Q160 50 170 80 Q190 100 160 120 L40 120 Q10 110 50 100 Z" fill="#FFFFFF" filter="drop-shadow(0 10px 15px rgba(255,192,203,0.5))"/>
+                <!-- Sleeping Kitten -->
+                <g transform="translate(60, 45)">
+                    <!-- Body/Blanket -->
+                    <path d="M20 50 Q40 30 70 50 Z" fill="#FFE4EC"/>
+                    <!-- Head -->
+                    <circle cx="45" cy="35" r="25" fill="#FFFFFF"/>
+                    <!-- Ears -->
+                    <polygon points="25,20 20,5 35,15" fill="#FFFFFF"/>
+                    <polygon points="25,20 20,5 35,15" fill="#FFC0CB" transform="scale(0.6) translate(25, 10)"/>
+                    <polygon points="65,20 70,5 55,15" fill="#FFFFFF"/>
+                    <polygon points="65,20 70,5 55,15" fill="#FFC0CB" transform="scale(0.6) translate(40, 10)"/>
+                    <!-- Sleeping Eyes -->
+                    <path d="M 30 35 Q 35 40 40 35" stroke="#6a1b41" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <path d="M 50 35 Q 55 40 60 35" stroke="#6a1b41" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <!-- Blush -->
+                    <ellipse cx="25" cy="40" rx="5" ry="3" fill="#FFC0CB"/>
+                    <ellipse cx="65" cy="40" rx="5" ry="3" fill="#FFC0CB"/>
+                    <!-- Nose -->
+                    <polygon points="43,42 47,42 45,45" fill="#FF69B4"/>
+                </g>
+                <!-- Zzz -->
+                <text x="140" y="40" font-family="Poppins" font-size="16" fill="#FF69B4" font-weight="bold" animation="float 2s infinite">Z</text>
+                <text x="155" y="25" font-family="Poppins" font-size="12" fill="#FF69B4" font-weight="bold" animation="float 2.5s infinite">z</text>
+            </svg>
+        </div>
+        <div class="loading-text">Something full of love is waiting for you, my baby… 💗</div>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="loading-bar"></div>
+        </div>
+    </div>
+
+    <main id="main-content" style="display: none;">
+        
+        <!-- 2. HERO SECTION -->
+        <section id="hero" class="section-hidden">
+            <div class="floating-bg-hearts" id="hero-hearts-container"></div>
+            
+            <h1 class="hero-title">GOOD MORNING MERI BABYYYY 🥹💕</h1>
+            <p class="hero-subtitle romantic-text">Utho meri jaan, tumhare PINKU ka pyaar bhara message aa gaya! 🌸😘</p>
+            
+            <!-- Hero Kitten SVG -->
+            <svg width="150" height="150" viewBox="0 0 150 150" style="margin-bottom: 20px; animation: float 3s infinite;">
+                <circle cx="75" cy="75" r="50" fill="#fff" filter="drop-shadow(0 5px 15px rgba(255,192,203,0.8))"/>
+                <!-- Ears -->
+                <polygon points="35,40 25,10 55,30" fill="#fff"/>
+                <polygon points="115,40 125,10 95,30" fill="#fff"/>
+                <!-- Eyes -->
+                <circle cx="55" cy="70" r="6" fill="#000"/>
+                <circle cx="95" cy="70" r="6" fill="#000"/>
+                <circle cx="53" cy="68" r="2" fill="#fff"/>
+                <circle cx="93" cy="68" r="2" fill="#fff"/>
+                <!-- Blush -->
+                <ellipse cx="40" cy="80" rx="8" ry="4" fill="#FFC0CB"/>
+                <ellipse cx="110" cy="80" rx="8" ry="4" fill="#FFC0CB"/>
+                <!-- Mouth -->
+                <path d="M 70 80 Q 75 85 80 80" stroke="#000" stroke-width="2" fill="none"/>
+                <!-- Heart -->
+                <path d="M75 120 C75 120 40 90 40 70 C40 55 60 55 75 75 C90 55 110 55 110 70 C110 90 75 120 75 120 Z" fill="#FF1493" transform="scale(0.8) translate(18, 40)"/>
+                <text x="58" y="115" font-family="Poppins" font-size="10" fill="#fff" font-weight="bold">I LOVE</text>
+                <text x="65" y="127" font-family="Poppins" font-size="10" fill="#fff" font-weight="bold">YOU</text>
+            </svg>
+
+            <div class="hero-message">
+                Good morning meri jaan, meri pyaari si baby, meri Laddu, meri duniya. ❤️🥹<br><br>
+                Kaash main abhi tumhare paas hota, tumhe pyaar se hug karta, tumhare forehead par ek sweet si kiss karta aur dheere se kehta — good morning, meri jaan. Tum meri subah ki sabse pyaari wajah ho aur meri har khushi ka sabse khoobsurat hissa ho. 💋🫂<br><br>
+                Bas aaj tum khush rehna, apna dhyaan rakhna, aur apni pyaari si smile kabhi mat khona. Kyunki tumhari smile mere liye duniya ki sabse khoobsurat cheez hai. 🧿💗
+            </div>
+
+            <button class="btn" onclick="revealSurpriseMessage(this)">OPEN YOUR LOVE SURPRISE 💝</button>
+            <div id="hero-surprise-text" style="display:none; margin-top:20px; font-weight:bold; color:var(--deep-pink); font-size:1.2rem;" class="romantic-text">
+                "You are my today and all of my tomorrows. I love you endlessly! ✨"
+            </div>
+        </section>
+
+        <!-- 3. KITTEN LOVE GARDEN -->
+        <section id="kitten-garden" class="section-hidden">
+            <h2 class="section-heading">Our Little Kitten Love Garden 🐱🌷</h2>
+            <p>Click on any kitten to see what they have to say!</p>
+            
+            <div class="kitten-grid">
+                <!-- Kitten 1: Heart -->
+                <div class="kitten-card" onclick="showKittenMessage(this, 'PINKU loves you more than all the stars! 💗')">
+                    <div class="kitten-message-bubble"></div>
+                    <svg class="kitten-svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#FFE4EC"/>
+                        <polygon points="20,30 15,5 35,20" fill="#FFE4EC"/>
+                        <polygon points="80,30 85,5 65,20" fill="#FFE4EC"/>
+                        <circle cx="35" cy="45" r="4" fill="#6a1b41"/>
+                        <circle cx="65" cy="45" r="4" fill="#6a1b41"/>
+                        <path d="M 50 70 C 50 70 30 50 30 40 C 30 30 40 30 50 40 C 60 30 70 30 70 40 C 70 50 50 70 50 70 Z" fill="#FF1493"/>
+                    </svg>
+                    <h3>Chotu Pinku</h3>
+                </div>
+
+                <!-- Kitten 2: Hugging -->
+                <div class="kitten-card" onclick="showKittenMessage(this, 'Ek tight wala hug tumhare liye! 🫂')">
+                    <div class="kitten-message-bubble"></div>
+                    <svg class="kitten-svg" viewBox="0 0 100 100">
+                        <!-- Cat 1 -->
+                        <circle cx="40" cy="50" r="30" fill="#fff"/>
+                        <polygon points="15,35 10,10 30,25" fill="#fff"/>
+                        <!-- Cat 2 (hugging) -->
+                        <circle cx="65" cy="55" r="28" fill="#FFC0CB"/>
+                        <polygon points="85,40 95,15 75,30" fill="#FFC0CB"/>
+                        <!-- Hearts above -->
+                        <path d="M 50 20 C 50 20 40 10 40 5 C 40 0 50 0 50 10 C 50 0 60 0 60 5 C 60 10 50 20 50 20 Z" fill="#FF1493"/>
+                    </svg>
+                    <h3>Huggie Cats</h3>
+                </div>
+
+                <!-- Kitten 3: Sleepy -->
+                <div class="kitten-card" onclick="showKittenMessage(this, 'Meri baby duniya ki sabse pyaari baby hai! 🥹')">
+                    <div class="kitten-message-bubble"></div>
+                    <svg class="kitten-svg" viewBox="0 0 100 100">
+                        <!-- Blanket -->
+                        <path d="M10 80 Q50 60 90 80 L90 90 L10 90 Z" fill="#FF69B4"/>
+                        <!-- Head -->
+                        <circle cx="50" cy="55" r="25" fill="#fff"/>
+                        <!-- Closed Eyes -->
+                        <path d="M 40 55 Q 45 58 50 55" stroke="#000" fill="none" stroke-width="2"/>
+                        <path d="M 55 55 Q 60 58 65 55" stroke="#000" fill="none" stroke-width="2"/>
+                        <!-- Zzz -->
+                        <text x="70" y="30" font-family="Poppins" font-size="12" fill="#FF69B4">Zz</text>
+                    </svg>
+                    <h3>Sleepy Baby</h3>
+                </div>
+
+                <!-- Kitten 4: Rose -->
+                <div class="kitten-card" onclick="showKittenMessage(this, 'Aaj bhi, kal bhi, hamesha tum hi meri favourite rahogi. ❤️')">
+                    <div class="kitten-message-bubble"></div>
+                    <svg class="kitten-svg" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="35" fill="#fff"/>
+                        <circle cx="35" cy="45" r="5" fill="#000"/>
+                        <circle cx="65" cy="45" r="5" fill="#000"/>
+                        <!-- Rose -->
+                        <path d="M30 80 L45 60" stroke="#228B22" stroke-width="3"/>
+                        <circle cx="30" cy="80" r="10" fill="#D32F2F"/>
+                    </svg>
+                    <h3>Rosie</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. A SPECIAL GOOD MORNING LETTER -->
+        <section id="special-letter" class="section-hidden">
+            <h2 class="section-heading">A Special Letter For You 💌</h2>
+            <p>Tap the envelope to open your morning letter.</p>
+            
+            <div class="envelope-container" id="letter-envelope" onclick="openLetter()">
+                <div class="envelope">
+                    <div class="envelope-body">
+                        <div class="wax-seal">P</div>
+                    </div>
+                    <div class="flap"></div>
+                    <div class="letter-paper" id="letter-content-box">
+                        <div class="letter-content" id="letter-text">
+                            <!-- JS will inject paragraphs here for animation -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. WHY YOU ARE SO SPECIAL -->
+        <section id="why-special" class="section-hidden">
+            <h2 class="section-heading">Why You Are So Special 💖</h2>
+            <p class="romantic-text" style="font-size: 2rem;">Every little thing about you is magic...</p>
+            
+            <div class="cards-container">
+                <div class="glass-card" onclick="flipCard(this)">
+                    <span class="card-number">01</span>
+                    <h3>Your Smile</h3>
+                    <p>Your smile is my favourite sunrise. 🌅💕</p>
+                    <p class="extra-msg" style="display:none; color:var(--deep-pink); font-weight:bold; margin-top:10px;">It brightens up my darkest days!</p>
+                </div>
+                <div class="glass-card" onclick="flipCard(this)">
+                    <span class="card-number">02</span>
+                    <h3>My Feeling</h3>
+                    <p>Tum meri duniya ki sabse pyaari feeling ho. 🥹</p>
+                    <p class="extra-msg" style="display:none; color:var(--deep-pink); font-weight:bold; margin-top:10px;">The best thing that ever happened to me.</p>
+                </div>
+                <div class="glass-card" onclick="flipCard(this)">
+                    <span class="card-number">03</span>
+                    <h3>Our Talks</h3>
+                    <p>Tumse baat karke mera din better ho jaata hai. 💗</p>
+                    <p class="extra-msg" style="display:none; color:var(--deep-pink); font-weight:bold; margin-top:10px;">Your voice is my favourite sound.</p>
+                </div>
+                <div class="glass-card" onclick="flipCard(this)">
+                    <span class="card-number">04</span>
+                    <h3>The Magic</h3>
+                    <p>You make my ordinary days feel magical. ✨</p>
+                    <p class="extra-msg" style="display:none; color:var(--deep-pink); font-weight:bold; margin-top:10px;">Life with you is a beautiful dream.</p>
+                </div>
+                <div class="glass-card" onclick="flipCard(this)">
+                    <span class="card-number">05</span>
+                    <h3>Your Happiness</h3>
+                    <p>Tumhari khushi mere liye bahut matter karti hai. 🫶</p>
+                    <p class="extra-msg" style="display:none; color:var(--deep-pink); font-weight:bold; margin-top:10px;">I'll do anything to see you happy.</p>
+                </div>
+                <div class="glass-card" onclick="flipCard(this)">
+                    <span class="card-number">06</span>
+                    <h3>Forever You</h3>
+                    <p>Meri favourite person? Always YOU. ❤️</p>
+                    <p class="extra-msg" style="display:none; color:var(--deep-pink); font-weight:bold; margin-top:10px;">Nobody else, just you and me.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. PINK FLOWER GARDEN -->
+        <section id="flower-garden" class="section-hidden">
+            <h2 class="section-heading">A LITTLE GARDEN FULL OF LOVE FOR YOU 🌸</h2>
+            <p class="hero-message" style="margin-bottom: 20px;">
+                Har phool tumhari smile jaisa khoobsurat ho, har subah tumhare liye ek nayi khushi laaye, aur tumhari life hamesha pyaar aur sukoon se bhari rahe. 💗
+            </p>
+            <button class="btn" onclick="burstPetals()">SHOWER ME WITH LOVE 🌸</button>
+            
+            <div class="garden-scenery">
+                <!-- SVG Tulips/Flowers -->
+                <svg class="flower-svg" viewBox="0 0 50 100">
+                    <path d="M25 100 Q20 50 25 30" stroke="green" stroke-width="4" fill="none"/>
+                    <path d="M10 10 C 10 30 25 40 25 40 C 25 40 40 30 40 10 C 30 20 20 20 10 10 Z" fill="#FF1493"/>
+                </svg>
+                <svg class="flower-svg" viewBox="0 0 50 100">
+                    <path d="M25 100 Q30 60 25 40" stroke="green" stroke-width="4" fill="none"/>
+                    <path d="M15 15 C 15 35 25 45 25 45 C 25 45 35 35 35 15 C 25 25 25 25 15 15 Z" fill="#FF69B4"/>
+                </svg>
+                <svg class="flower-svg" viewBox="0 0 50 100">
+                    <path d="M25 100 Q20 50 25 30" stroke="green" stroke-width="4" fill="none"/>
+                    <path d="M10 10 C 10 30 25 40 25 40 C 25 40 40 30 40 10 C 30 20 20 20 10 10 Z" fill="#FFC0CB"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 7. CUTE MORNING CARE SECTION -->
+        <section id="morning-care" class="section-hidden">
+            <h2 class="section-heading">Meri Baby Ka Morning Routine 💗</h2>
+            <div class="checklist-container">
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="custom-checkbox"></div>
+                    <span>🌸 Wake up with a beautiful smile.</span>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="custom-checkbox"></div>
+                    <span>🪥 Brush your teeth, cutie.</span>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="custom-checkbox"></div>
+                    <span>🥛 Drink a big glass of water.</span>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="custom-checkbox"></div>
+                    <span>🍓 Eat a yummy, healthy breakfast.</span>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="custom-checkbox"></div>
+                    <span>💕 Take care of yourself today.</span>
+                </div>
+                <div class="checklist-item" onclick="toggleCheck(this)">
+                    <div class="custom-checkbox"></div>
+                    <span>😘 Remember that PINKU loves you forever.</span>
+                </div>
+
+                <div class="overall-progress">
+                    <p style="text-align:right; font-weight:bold; color:var(--deep-pink);" id="progress-text">0 / 6 Done</p>
+                    <div class="care-progress-bar">
+                        <div class="care-progress-fill" id="care-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. OUR LOVE COUNTER -->
+        <section id="love-counter" class="section-hidden">
+            <h2 class="section-heading">INFINITE LOVE FOR MY BABY 💘</h2>
+            <p style="font-size: 1.2rem;">Tap the heart to receive all my love...</p>
+            
+            <button class="giant-heart-btn" onclick="incrementLove(event)">
+                <svg class="giant-heart-svg" viewBox="0 0 100 100">
+                    <path d="M50 90 C50 90 10 60 10 35 C10 15 35 15 50 40 C65 15 90 15 90 35 C90 60 50 90 50 90 Z" fill="url(#grad1)"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF69B4;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#FF1493;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </button>
+            
+            <div class="counter-display" id="love-count-num">0</div>
+            <p id="love-label" style="font-size: 1.5rem; color: var(--rose-pink); font-weight: bold; margin-top: 10px;">Infinite hugs 🫂</p>
+        </section>
+
+        <!-- 9. A LITTLE PROMISE FOR YOU -->
+        <section id="night-promise" class="section-hidden">
+            <div class="stars-container" id="stars-bg"></div>
+            
+            <h2 class="section-heading">ONE LITTLE PROMISE, MERI JAAN 🌙💗</h2>
+            
+            <div class="moon-kitten-scene">
+                <!-- Moon -->
+                <svg viewBox="0 0 200 200" style="position:absolute; top:20px; right:20px; width:100px; height:100px;">
+                    <path d="M100 20 A70 70 0 1 0 170 100 A60 60 0 0 1 100 20 Z" fill="#FFE4EC" filter="drop-shadow(0 0 20px rgba(255,255,255,0.8))"/>
+                </svg>
+                <!-- Kittens silhouette -->
+                <svg viewBox="0 0 200 100" style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:200px; height:100px;">
+                    <path d="M60 100 Q60 50 80 50 Q100 50 100 100 Z" fill="#2b1b42"/> <!-- Cat 1 -->
+                    <path d="M100 100 Q100 60 120 60 Q140 60 140 100 Z" fill="#2b1b42"/> <!-- Cat 2 -->
+                    <!-- Ears -->
+                    <polygon points="65,65 60,40 75,55" fill="#2b1b42"/>
+                    <polygon points="95,65 100,40 85,55" fill="#2b1b42"/>
+                    <polygon points="105,70 100,50 115,60" fill="#2b1b42"/>
+                    <polygon points="135,70 140,50 125,60" fill="#2b1b42"/>
+                    <!-- Tails -->
+                    <path d="M65 90 Q40 80 45 60" stroke="#2b1b42" stroke-width="6" fill="none" stroke-linecap="round"/>
+                    <path d="M135 90 Q160 80 155 60" stroke="#2b1b42" stroke-width="6" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            
+            <div class="promise-text">
+                Main chahta hoon ki tum hamesha khush raho, apne dreams poore karo aur khud se bhi utna hi pyaar karo jitna tum deserve karti ho. Main tumhari smile ki wajah banna chahta hoon, tumhari khushi celebrate karna chahta hoon aur tumhe har din yaad dilana chahta hoon ki tum kitni special ho. ❤️
+            </div>
+        </section>
+
+        <!-- 10. SECRET LOVE SURPRISE -->
+        <section id="secret-surprise" class="section-hidden">
+            <h2 class="section-heading">A Final Surprise For You 🎁</h2>
+            
+            <div class="gift-box-container" id="gift-box" onclick="openGift()">
+                <svg class="gift-box-svg" viewBox="0 0 200 200">
+                    <!-- Box Body -->
+                    <rect x="50" y="100" width="100" height="80" fill="#FF1493" rx="5"/>
+                    <rect x="90" y="100" width="20" height="80" fill="#FFC0CB"/>
+                    <!-- Lid -->
+                    <g class="gift-lid">
+                        <rect x="40" y="70" width="120" height="30" fill="#FF69B4" rx="5"/>
+                        <rect x="90" y="70" width="20" height="30" fill="#FFC0CB"/>
+                        <!-- Bow -->
+                        <path d="M100 70 Q70 30 100 50 Z" fill="#FFC0CB"/>
+                        <path d="M100 70 Q130 30 100 50 Z" fill="#FFC0CB"/>
+                    </g>
+                </svg>
+            </div>
+            <button class="btn" onclick="openGift()" id="gift-btn">OPEN YOUR SECRET GIFT 🎀</button>
+            
+            <div class="surprise-message" id="surprise-msg">
+                <h3 style="font-size: 2rem; color: var(--deep-pink); font-family: 'Poppins', sans-serif;">SURPRISEEEE MERI BABYYYY! 🥹💗</h3>
+                <p style="font-size: 1.2rem; margin-top: 15px;">
+                    Aaj ki sabse pyaari gift tumhari smile hai. Tum khush raho, safe raho, healthy raho aur hamesha apni beautiful personality ke saath shine karti raho.<br><br>
+                    <strong>LOTS OF LOVE, HUGS & KISSES FROM YOUR PINKU! 💋🫂❤️</strong>
+                </p>
+                <button class="btn" style="margin-top: 20px;" onclick="replaySurprise()">REPLAY SURPRISE 🎉</button>
+            </div>
+        </section>
+
+        <!-- 11. FINAL LOVE SECTION -->
+        <section id="final-section" class="section-hidden">
+            <h2 class="section-heading" style="color: white; font-size: 3rem;">GOOD MORNING MERI JAAN 🌸</h2>
+            <p style="font-size: 1.5rem; max-width: 800px; margin: 20px auto;">
+                YOU ARE MY FAVOURITE PERSON, MY CUTEST BABY, AND MY MOST BEAUTIFUL THOUGHT. 💕
+            </p>
+            
+            <svg class="final-kittens" id="final-hug-svg" viewBox="0 0 200 150">
+                <!-- Huge Glowing Heart -->
+                <path d="M100 140 C100 140 20 90 20 40 C20 15 50 15 70 30 C85 45 100 60 100 60 C100 60 115 45 130 30 C150 15 180 15 180 40 C180 90 100 140 100 140 Z" fill="#fff" filter="drop-shadow(0 0 20px rgba(255,255,255,0.8))"/>
+                
+                <!-- Kitten Left -->
+                <circle cx="70" cy="80" r="30" fill="#FFE4EC"/>
+                <polygon points="45,65 40,40 60,55" fill="#FFE4EC"/>
+                
+                <!-- Kitten Right -->
+                <circle cx="130" cy="80" r="30" fill="#FFC0CB"/>
+                <polygon points="155,65 160,40 140,55" fill="#FFC0CB"/>
+                
+                <!-- Faces -->
+                <path d="M 60 85 Q 65 90 70 85" fill="none" stroke="#6a1b41" stroke-width="2"/>
+                <path d="M 130 85 Q 135 90 140 85" fill="none" stroke="#6a1b41" stroke-width="2"/>
+            </svg>
+
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 20px auto;">
+                Aaj bhi tum, kal bhi tum, aur har beautiful morning mein meri favourite wish tumhari khushi hogi.<br>
+                <strong>I LOVE YOU SOOO MUCH! 🥹❤️😘</strong>
+            </p>
+
+            <p class="romantic-text" style="color: white; font-size: 4rem; margin: 30px 0; text-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+                — Hum, Pinku ❤️
+            </p>
+
+            <button class="btn" onclick="sendFinalHug()" style="background: white; color: var(--deep-pink);">SEND ONE MORE HUG 🫂</button>
+            <p id="final-hug-msg" style="display:none; font-size: 1.5rem; font-weight: bold; margin-top: 20px; animation: fade-in-up 0.5s;">
+                A BIG TIGHT HUG FROM PINKU TO YOUUU! 💗
+            </p>
+        </section>
+
+        <footer>
+            Made with endless love by PINKU 💗 | Just for my Baby
+        </footer>
+    </main>
+
+    <script>
+        // Web Audio API for Soft UI Sounds
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let isMuted = true; // Start muted as per requirements
+
+        function playMagicSound() {
+            if (isMuted) return;
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+            osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.3);
+            
+            gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            gainNode.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.1);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+            
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.5);
+        }
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            const btn = document.getElementById('bgm-toggle');
+            if (isMuted) {
+                btn.innerHTML = '🔇';
+                btn.style.background = 'var(--glass-bg)';
+            } else {
+                btn.innerHTML = '🎵';
+                btn.style.background = 'rgba(255, 105, 180, 0.5)';
+                playMagicSound();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+            }
+        }
+
+        // Custom Cursor Logic
+        const cursor = document.getElementById('custom-cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            createFloatingHeart(e.clientX, e.clientY);
+        });
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+
+        function createFloatingHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💗';
+            heart.style.position = 'fixed';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.pointerEvents = 'none';
+            heart.style.animation = 'float 1s ease-out forwards, fade-in-up 1s forwards';
+            heart.style.fontSize = '1.5rem';
+            heart.style.zIndex = '9999';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        }
+
+        // Loading Screen Logic
+        window.addEventListener('DOMContentLoaded', () => {
+            const loadingBar = document.getElementById('loading-bar');
+            let width = 0;
+            const interval = setInterval(() => {
+                width += 2;
+                loadingBar.style.width = width + '%';
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        document.getElementById('loading-screen').style.opacity = '0';
+                        document.getElementById('loading-screen').style.visibility = 'hidden';
+                        document.getElementById('main-content').style.display = 'block';
+                        initBackgroundHearts();
+                        initStars();
+                        observeSections();
+                    }, 500);
+                }
+            }, 30);
+        });
+
+        // Intersection Observer for Scroll Animations
+        function observeSections() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section-hidden').forEach(sec => {
+                observer.observe(sec);
+            });
+        }
+
+        function initBackgroundHearts() {
+            const container = document.getElementById('hero-hearts-container');
+            for(let i=0; i<15; i++) {
+                let heart = document.createElement('div');
+                heart.innerHTML = '🤍';
+                heart.style.position = 'absolute';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.opacity = Math.random() * 0.5 + 0.2;
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animation = `float ${Math.random() * 3 + 2}s infinite alternate`;
+                container.appendChild(heart);
+            }
+        }
+
+        function revealSurpriseMessage(btn) {
+            playMagicSound();
+            btn.style.display = 'none';
+            const msg = document.getElementById('hero-surprise-text');
+            msg.style.display = 'block';
+            msg.style.animation = 'fade-in-up 1s ease-out forwards';
+            spawnConfetti(50, window.innerWidth/2, window.innerHeight/2);
+        }
+
+        function showKittenMessage(card, text) {
+            playMagicSound();
+            const bubble = card.querySelector('.kitten-message-bubble');
+            bubble.innerText = text;
+            
+            // Pop effect
+            card.style.transform = 'scale(1.1)';
+            setTimeout(() => { card.style.transform = ''; }, 200);
+        }
+
+        const letterLines = [
+            "Good morning, meri jaan. ❤️",
+            "Pata hai, main chahta hoon ki tumhari har subah ek pyaari si smile ke saath shuru ho.",
+            "Chahe hum kitne bhi door hon, mera pyaar hamesha tumhare saath hai.",
+            "Tum meri life ka woh beautiful part ho jo ordinary moments ko bhi special bana deta hai.",
+            "Tumhari khushi mere liye bahut important hai, aur main chahta hoon ki tum hamesha loved, special aur appreciated feel karo.",
+            "Aaj ka din tumhare liye dher saari khushiyan, peace, smiles aur beautiful moments lekar aaye.",
+            "Agar kabhi tumhara mood off ho, toh yaad rakhna ki tumhara PINKU tumhe bahut saara pyaar bhej raha hai.",
+            "Apna khayal rakhna, meri baby. Breakfast kar lena, paani peena aur apni cute si smile ke saath din shuru karna.",
+            "I LOVE YOU SO MUCH, MERI JAAN. 💋🫂💗",
+            "Forever sending love,",
+            "Tumhara PINKU ❤️"
+        ];
+
+        let letterOpened = false;
+        function openLetter() {
+            if (letterOpened) return;
+            letterOpened = true;
+            playMagicSound();
+            
+            const envelope = document.querySelector('.envelope');
+            envelope.classList.add('open');
+            
+            const contentBox = document.getElementById('letter-text');
+            contentBox.innerHTML = ''; // clear
+
+            setTimeout(() => {
+                letterLines.forEach((line, index) => {
+                    const p = document.createElement('p');
+                    p.innerText = line;
+                    contentBox.appendChild(p);
+                    
+                    setTimeout(() => {
+                        p.classList.add('visible');
+                    }, index * 800); // 800ms delay per line
+                });
+            }, 1000); // wait for envelope to open
+        }
+
+        function flipCard(card) {
+            playMagicSound();
+            const extra = card.querySelector('.extra-msg');
+            if(extra.style.display === 'none') {
+                extra.style.display = 'block';
+                extra.style.animation = 'fade-in-up 0.4s forwards';
+            }
+        }
+
+        function burstPetals() {
+            playMagicSound();
+            const container = document.getElementById('flower-garden');
+            for(let i=0; i<30; i++) {
+                setTimeout(() => {
+                    const petal = document.createElement('div');
+                    petal.classList.add('falling-petal');
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.width = (Math.random() * 15 + 10) + 'px';
+                    petal.style.height = (Math.random() * 15 + 10) + 'px';
+                    petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    container.appendChild(petal);
+                    
+                    setTimeout(() => petal.remove(), 5000);
+                }, i * 50);
+            }
+        }
+
+        let checkedCount = 0;
+        function toggleCheck(item) {
+            if (item.classList.contains('checked')) return; // Only allow checking, not unchecking for positivity!
+            
+            playMagicSound();
+            item.classList.add('checked');
+            
+            const rect = item.getBoundingClientRect();
+            createFloatingHeart(rect.right - 50, rect.top + 15);
+
+            checkedCount++;
+            const progressNum = document.getElementById('progress-text');
+            const progressBar = document.getElementById('care-bar');
+            
+            progressNum.innerText = `${checkedCount} / 6 Done`;
+            progressBar.style.width = `${(checkedCount / 6) * 100}%`;
+
+            if(checkedCount === 6) {
+                setTimeout(() => {
+                    progressNum.innerText = "YAY! MERI BABY IS READY! 💖";
+                    spawnConfetti(30, window.innerWidth/2, window.innerHeight/2);
+                }, 500);
+            }
+        }
+
+        let loveCount = 0;
+        const loveLabels = ["Infinite hugs 🫂", "Unlimited kisses 💋", "Endless love ❤️", "Forever Yours 💕", "My Entire World 🌍"];
+        function incrementLove(e) {
+            playMagicSound();
+            loveCount++;
+            document.getElementById('love-count-num').innerText = loveCount;
+            
+            // Spawn mini hearts around cursor
+            for(let i=0; i<3; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💗';
+                heart.style.position = 'fixed';
+                heart.style.left = (e.clientX + (Math.random() * 60 - 30)) + 'px';
+                heart.style.top = (e.clientY + (Math.random() * 60 - 30)) + 'px';
+                heart.style.pointerEvents = 'none';
+                heart.style.animation = 'fade-in-up 1s forwards';
+                heart.style.zIndex = '9999';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1000);
+            }
+
+            if(loveCount % 5 === 0) {
+                document.getElementById('love-label').innerText = loveLabels[(loveCount/5) % loveLabels.length];
+                document.getElementById('love-label').style.animation = 'pulse-heart 0.5s';
+                setTimeout(()=> document.getElementById('love-label').style.animation='', 500);
+            }
+        }
+
+        function initStars() {
+            const container = document.getElementById('stars-bg');
+            for(let i=0; i<50; i++) {
+                let star = document.createElement('div');
+                star.style.position = 'absolute';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = (Math.random() * 3 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.background = '#fff';
+                star.style.borderRadius = '50%';
+                star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite alternate`;
+                container.appendChild(star);
+            }
+        }
+
+        function openGift() {
+            const box = document.getElementById('gift-box');
+            if(box.classList.contains('opened')) return;
+            
+            playMagicSound();
+            box.classList.add('opened');
+            document.getElementById('gift-btn').style.display = 'none';
+            document.getElementById('surprise-msg').style.display = 'block';
+            
+            const rect = box.getBoundingClientRect();
+            spawnConfetti(100, rect.left + rect.width/2, rect.top);
+        }
+
+        function replaySurprise() {
+            playMagicSound();
+            const box = document.getElementById('gift-box');
+            box.classList.remove('opened');
+            document.getElementById('surprise-msg').style.display = 'none';
+            setTimeout(openGift, 500);
+        }
+
+        function sendFinalHug() {
+            playMagicSound();
+            const kittens = document.getElementById('final-hug-svg');
+            kittens.classList.add('hug-tight');
+            document.getElementById('final-hug-msg').style.display = 'block';
+            spawnConfetti(80, window.innerWidth/2, window.innerHeight - 200);
+            
+            setTimeout(() => {
+                kittens.classList.remove('hug-tight');
+            }, 1000);
+        }
+
+        // Custom DOM Confetti Generator to avoid external dependencies
+        function spawnConfetti(amount, x, y) {
+            const colors = ['#FFC0CB', '#FF69B4', '#FF1493', '#FFFFFF', '#E6D5FF'];
+            for (let i = 0; i < amount; i++) {
+                const conf = document.createElement('div');
+                conf.classList.add('confetti');
+                conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                conf.style.left = x + 'px';
+                conf.style.top = y + 'px';
+                
+                // Randomize trajectory
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = Math.random() * 20 + 10;
+                const tx = Math.cos(angle) * velocity * 20;
+                const ty = Math.sin(angle) * velocity * 20 - 200; // upward bias
+                
+                conf.style.setProperty('--tx', `${tx}px`);
+                conf.style.setProperty('--ty', `${ty}px`);
+                
+                // Overriding keyframe for dynamic trajectory
+                conf.animate([
+                    { transform: `translate(0,0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translate(${tx}px, ${ty}px) rotate(${Math.random()*720}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 1500,
+                    easing: 'cubic-bezier(.37,0,.63,1)',
+                    fill: 'forwards'
+                });
+
+                document.body.appendChild(conf);
+                setTimeout(() => conf.remove(), 3500);
+            }
+        }
+    </script>
+</body>
+</html>
